@@ -28,9 +28,15 @@ public class Student {
     public Integer getAge() {
         return age;
     }
+    public String getAgeAsString(){
+        return String.valueOf(age); //альтернативный метод, который берет возраст как стринг и делает из него Integer
+    }
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+    public void setAge(String age) {
+        this.age = Integer.valueOf(age); //альтернативный метод, который берет возраст как стринг и делает из него Integer
     }
 
     public int getSexID() {
