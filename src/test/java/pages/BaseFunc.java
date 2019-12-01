@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BaseFunc {
     private WebDriver driver; // нужен для использования только в рамках данного класса
@@ -19,7 +20,7 @@ public class BaseFunc {
         System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); // эта штуковина ждет загрузку всей страницы
     }
 
     public void goToUrl(String url) {
@@ -40,6 +41,7 @@ public class BaseFunc {
         WebElement getElement = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return driver.findElement(locator); // можно добавить проверку на то, что элемент существует
         // можно поставить ожидание на исчезновение крутилки(загрузки) F12/ Network -> Online -> Offline
+        // эта штука ждет определенный элемент
     }
 
     public WebElement getElementFromList(By locator, int index) {
